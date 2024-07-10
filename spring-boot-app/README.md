@@ -61,7 +61,25 @@ chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
 cd sonarqube-9.4.0.54424/bin/linux-x86-64/
 ./sonar.sh start
 ```
+Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000`
 
-Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
+### Install Docker
+```
+sudo apt update
+sudo apt install docker.io
+```
+### Grant Jenkins user and Ubuntu user permission to docker deamon.
+```
+sudo su - 
+usermod -aG docker jenkins
+usermod -aG docker ubuntu
+systemctl restart docker
+```
+Once you are done with the above steps, it is better to restart Jenkins.
+http://<ec2-instance-public-ip>:8080/restart
+
+
+
+ 
 
 
