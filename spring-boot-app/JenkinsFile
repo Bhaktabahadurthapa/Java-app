@@ -12,13 +12,13 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
       }
     }
-    //stage('Build and Test') {
-     // steps {
-       // sh 'ls -ltr'
-        // build the project and create a JAR file
-       // sh 'cd Java-app/spring-boot-app && mvn clean package'
-      //}
-    //}
+    stage('Build and Test') {
+     steps {
+       sh 'ls -ltr'
+        build the project and create a JAR file
+        sh 'cd Java-app/spring-boot-app && mvn clean package'
+      }
+    }
     stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://54.177.139.220:9000"
