@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://13.57.19.168:9000"
+        SONAR_URL = "http://54.177.139.220:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "lishan2023/ultimate-cicd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "lishan2023/Java-app:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "Java-app/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
