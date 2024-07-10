@@ -2,21 +2,24 @@ pipeline {
   agent {
     docker {
       image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+      args '-u 111:113 -v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
   stages {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/Bhaktabahadurthapa/Java-app.git'
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Bhaktabahadurthapa/Java-app']]])
       }
     }
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
         // build the project and create a JAR file
-        sh 'cd Java-app/spring-boot-app && mvn clean package'
+        dir('spring-boot-app') {
+          sh './mvnw clean package'
+          sh './mvnw test'
+          }
       }
     }
     stage('Static Code Analysis') {
