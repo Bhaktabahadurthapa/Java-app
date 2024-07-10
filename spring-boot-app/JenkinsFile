@@ -2,26 +2,23 @@ pipeline {
   agent {
     docker {
       image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      args '-u 111:113 -v /var/run/docker.sock:/var/run/docker.sock'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
   stages {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Bhaktabahadurthapa/Java-app']]])
+        //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
       }
     }
-    stage('Build and Test') {
-      steps {
-        sh 'ls -ltr'
+    //stage('Build and Test') {
+     // steps {
+       // sh 'ls -ltr'
         // build the project and create a JAR file
-        dir('spring-boot-app') {
-          sh './mvnw clean package'
-          sh './mvnw test'
-          }
-      }
-    }
+       // sh 'cd Java-app/spring-boot-app && mvn clean package'
+      //}
+    //}
     stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://54.177.139.220:9000"
