@@ -79,6 +79,13 @@ Once you are done with the above steps, it is better to restart Jenkins.
 http://<ec2-instance-public-ip>:8080/restart
 
 
+### jenkins slowness issue sloved by change the IP address
+```
+cd /var/lib/jenkins/
+sudo nano jenkins.model.JenkinsLocationConfiguration.xml
+
+```
+then change the NEW EC2 instance IP address.
 
  
 
