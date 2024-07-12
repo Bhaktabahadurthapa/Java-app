@@ -14,11 +14,9 @@ pipeline {
     }
     stage('Build and Test') {
      steps {
-       sh 'pwd'
        sh 'ls -ltr'
         //build the project and create a JAR file
-       sh 'cd Java-app/spring-boot-app'
-       sh 'mvn clean package'
+       sh 'cd Java-app/spring-boot-app && mvn clean package'
       }
     }
     stage('Static Code Analysis') {
