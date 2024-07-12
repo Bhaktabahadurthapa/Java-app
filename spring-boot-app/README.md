@@ -83,6 +83,8 @@ http://<ec2-instance-public-ip>:8080/restart
 ```
 cd /var/lib/jenkins/
 sudo nano jenkins.model.JenkinsLocationConfiguration.xml
+sudo systemctl restart jenkins
+sudo systemctl enable jenkins
 
 ```
 then change the NEW EC2 instance IP address.
