@@ -11,18 +11,6 @@ pipeline {
     SONAR_URL = "http://54.177.233.149:9000"
     DOCKER_IMAGE = "lishan2023/java-app:${BUILD_NUMBER}"
   }
-  stages {
-    stage('Checkout') {
-      steps {
-        // Ensure Jenkins user has proper permissions
-        sh 'chown -R $(whoami):$(whoami) /var/lib/jenkins/workspace/CICD project'
-        script {
-          def scmVars = checkout([$class: 'GitSCM',
-                                  branches: [[name: 'main']],
-                                  userRemoteConfigs: [[url: 'https://github.com/Bhaktabahadurthapa/Java-app', credentialsId: 'github']]])
-        }
-      }
-    }
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
