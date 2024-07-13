@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: lishan2023/Java-app:28
+        image: lishan2023/replaceImageTag
         ports:
         - containerPort: 8080
