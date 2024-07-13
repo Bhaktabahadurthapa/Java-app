@@ -53,13 +53,27 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
-                    git config user.email "bhaktathapamgr5@gmail.com"
-                    git config user.name "bhaktabahadurthapa"
-                    BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
-                    git add spring-boot-app-manifests/deployment.yml
-                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                      # Set git config
+                      git config user.email "bhaktathapamgr5@gmail.com"
+                      git config user.name "bhaktabahadurthapa"
+                      
+                      # Set build number
+                      BUILD_NUMBER=${BUILD_NUMBER}
+                      
+                      # Update deployment file with build number
+                      sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+                      
+                      # Add and commit changes
+                      git add spring-boot-app-manifests/deployment.yml
+                      git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                      
+                      # Add .gitignore if it doesn't exist or update if it does
+                      echo "spring-boot-app/target/" >> .gitignore
+                      git add .gitignore
+                      git commit -m "Add target directory to .gitignore"
+                      
+                      # Push changes to the repository
+                      git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
                 '''
             }
         }
