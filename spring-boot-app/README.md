@@ -89,6 +89,10 @@ sudo systemctl enable jenkins
 ```
 then change the NEW EC2 instance IP address.
 
- 
+ ### Minikube start 
+ ...
+  minikube start
+  minikube start --memory=2900 --driver=docker
+ ...
 
 
