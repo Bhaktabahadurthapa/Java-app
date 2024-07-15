@@ -94,5 +94,21 @@ then change the NEW EC2 instance IP address.
   minikube start
   minikube start --memory=2900 --driver=docker
  ```
+### Debian/Ubuntu (Official) for Installing Trivy
+```
+sudo apt-get install wget apt-transport-https gnupg
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy
 
-
+```
+#### Github and Git
+```
+git init
+git add .
+git status
+git commit -m "v1 chnage"
+or git remote add origin https://github.com/OWNER/REPOSITORY.git  
+git push origin main --force 
+```
