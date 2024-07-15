@@ -45,6 +45,12 @@ pipeline {
         }
       }
     }
+    stage('Trivy Image Scanning security check') {
+      steps {
+        //image scanning using trivy
+        sh "trivy image lishan2023/java-app:${BUILD_NUMBER}"
+      }
+    }
     stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Java-app"
