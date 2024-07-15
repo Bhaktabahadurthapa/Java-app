@@ -45,8 +45,9 @@ pipeline {
         }
       }
     }
-    stage('Trivy Image Scanning') {
+    stage('Trivy Image Scanning security check') {
       steps {
+        //image scanning using trivy
         sh "trivy image lishan2023/java-app:${BUILD_NUMBER}"
       }
     }
