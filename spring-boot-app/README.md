@@ -112,3 +112,16 @@ git commit -m "v1 chnage"
 or git remote add origin https://github.com/OWNER/REPOSITORY.git  
 git push origin main --force 
 ```
+
+### ArgoCD cluster install and link: https://operatorhub.io/operator/argocd-operator
+```
+minikube start
+minikube start --memory=2900 --driver=docker or hyperkit
+
+
+```
+
+
+
+
+
