@@ -117,7 +117,13 @@ git push origin main --force
 ```
 minikube start
 minikube start --memory=2900 --driver=docker or hyperkit
-
+kubectl get pods -n argocd
+kubectl get svc -n argocd
+kubectl edit svc argocd-server -n argocd    < change NodePort>
+minikube service argocd-server -n argocd
+kubectl get secret -n argocd
+kubectl edit secret argocd-initial-admin-secret -n argocd
+echo U2UxekNkVEVlZlNNeC10VQ== | base64 -d
 
 ```
 
