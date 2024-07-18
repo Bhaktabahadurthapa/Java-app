@@ -126,7 +126,14 @@ kubectl edit secret argocd-initial-admin-secret -n argocd
 echo U2UxekNkVEVlZlNNeC10VQ== | base64 -d
 
 ```
+### Expose the deployment k8s 
+```
+kubectl get deploy
+minikube service deploy_name
+kubectl get nodes -o wide
+kubectl get svc
 
+```
 
 
 
