@@ -94,7 +94,7 @@ then change the NEW EC2 instance IP address.
   minikube start
   minikube start --memory=2900 --driver=docker
  ```
-### Debian/Ubuntu (Official) for Installing Trivy
+### Debian/Ubuntu (Official) for Installing **Trivy**
 ```
 sudo apt-get install wget apt-transport-https gnupg
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
@@ -102,6 +102,11 @@ echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.
 sudo apt-get update
 sudo apt-get install trivy
 
+To remove old Docker images:
+docker image prune -a
+docker container prune
+<<<< To output the scan results in a table: >>>>
+trivy image --format table <Image_Name>
 ```
 #### Github and Git
 ```
